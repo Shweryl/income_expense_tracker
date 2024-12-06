@@ -1,0 +1,33 @@
+// Fonts
+// @import url('https://fonts.bunny.net/css?family=Nunito');
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+// Bootstrap
+
+@import 'variables.scss';
+
+@import 'bootstrap/scss/bootstrap';
+
+@import 'bootswatch.scss';
+
+
+
+html,body{
+    font-family: "Lora", serif;
+}
+
+.pagination-custom p{
+    color: $primary !important;
+}
+
+.custom-tooltip {
+    --bs-tooltip-bg: rgba(50, 93, 136) !important;
+    --bs-tooltip-color: white;
+}
+.nav-link.active{
+    color: rgba($primary, 0.6) !important;
+}
+
+

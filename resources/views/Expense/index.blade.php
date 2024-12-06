@@ -18,7 +18,7 @@
                     <tr>
                         <th>#</th>
                         <th>Note</th>
-                        <th>Amount</th>
+                        <th>Spend</th>
                         <th>Total Allocated Amount</th>
                         <th>Category</th>
                         <th>Date</th>

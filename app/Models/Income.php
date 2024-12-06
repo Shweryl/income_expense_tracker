@@ -13,4 +13,9 @@ class Income extends Model
         return $this->belongsToMany(Category::class)
                     ->withPivot('allocated_amount');
     }
+
+    // public function getSpendAmountByCategoryAttribute(){
+    //     $expense = Expense::whereBetween('date', [$this->start_date, $this->end_date])
+    //                         ->
+    // }
 }

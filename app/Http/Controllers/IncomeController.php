@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Expense;
 use App\Models\Income;
 use Illuminate\Http\Request;
 
@@ -92,7 +93,7 @@ class IncomeController extends Controller
         $income->start_date = $request->start_date;
         $income->end_date = $request->end_date;
         $income->update();
-        
+
         $allocatedAmount = [];
         foreach($request->categories as $key=>$value){
             $allocatedAmount[$key] = ['allocated_amount' => $value];
@@ -112,5 +113,25 @@ class IncomeController extends Controller
         $income->delete();
 
         return redirect()->route('income.index')->with('message','Income is deleted.');
+    }
+
+
+    public function budget($id){
+        $income = Income::find($id);
+        $spendAmount = Expense::whereBetween('date', [$income->start_date, $income->end_date])->sum('amount');
+        $budget_categories = [];
+
+        foreach($income->categories as $category){
+            $spendByCat = Expense::where('category_id', $category->id)
+                                ->whereBetween('date', [$income->start_date, $income->end_date])
+                                ->sum('amount') ;
+            $budget_categories[] = [
+                'category' => $category->name,
+                'allocated_amount' => $category->pivot->allocated_amount,
+                'spend_amount' => $spendByCat,
+            ];
+        }
+
+        return view('Income.budget', compact('income', 'spendAmount', 'budget_categories'));
     }
 }

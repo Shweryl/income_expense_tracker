@@ -44,7 +44,9 @@
                                 <a href="{{ route('income.show', $income->id) }}" class="btn btn-sm btn-primary" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-title="View More">
                                     <i class="bi bi-grid-3x3-gap"></i>
                                 </a>
-
+                                <a href="{{ route('budget.show', $income->id) }}" class="btn btn-sm btn-info" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Budget">
+                                    <i class="bi bi-wallet-fill"></i>
+                                </a>
                             </td>
                         </tr>
                         @php

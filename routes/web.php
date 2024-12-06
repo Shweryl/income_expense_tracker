@@ -29,5 +29,6 @@ Route::middleware('auth')->group(function(){
     // Route::resource('transaction', TransactionController::class);
     Route::resource('expense', ExpenseController::class);
     Route::resource('income', IncomeController::class);
+    Route::get('/budget/{id}', [IncomeController::class, 'budget'])->name('budget.show');
 });
 
